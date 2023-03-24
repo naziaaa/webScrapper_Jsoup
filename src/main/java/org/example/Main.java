@@ -32,10 +32,15 @@ public class Main {
                 for(Element tag: quoteElement.select(".tag")){
                     tags.add(tag.text());
                 }
-
+                //store the data in quote object
+                quote.setText(text);
+                quote.setAuthor(author);
+                quote.setTags(String.join(",",tags));
+                quotes.add(quote);
             }
-
+            nextElements=doc.select(".next");
         }
+
 
 
     }
