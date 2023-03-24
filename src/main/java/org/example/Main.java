@@ -40,8 +40,17 @@ public class Main {
             }
             nextElements=doc.select(".next");
         }
+        File csv=new File("output.csv");
+        try(PrintWriter printWriter=new PrintWriter(csv,StandardCharsets.UTF_8)) {
+         printWriter.write('\ufeff');
 
-
-
+         for(Quote quote: quotes){
+             List<String> row=new ArrayList<>();
+             row.add("\""+quote.getText()+"\"");
+             row.add(("\""+quote.getAuthor()+"\""));
+             row.add(("\""+quote.getTags()+"\""));
+             printWriter.println(String.join(",",row));
+         }
+        }
     }
 }
